@@ -1,0 +1,94 @@
+{
+  "_id": "n8n-nodes-flarum@0.1.12",
+  "_rev": "3-78b3ff3101fac305bb40d26762e648bc",
+  "name": "n8n-nodes-flarum",
+  "dist-tags": {
+    "latest": "0.1.12"
+  },
+  "versions": [
+    "0.1.0",
+    "0.1.9",
+    "0.1.12"
+  ],
+  "time": {
+    "created": "2026-07-27T11:58:14.108Z",
+    "modified": "2026-07-27T13:40:55.109Z",
+    "0.1.0": "2026-07-27T11:58:14.355Z",
+    "0.1.9": "2026-07-27T13:22:04.597Z",
+    "0.1.12": "2026-07-27T13:40:54.943Z"
+  },
+  "bugs": {
+    "url": "https://github.com/huseyinfiliz/n8n-nodes-flarum/issues"
+  },
+  "author": "Hüseyin Filiz",
+  "license": "MIT",
+  "homepage": "https://github.com/huseyinfiliz/n8n-nodes-flarum",
+  "keywords": [
+    "n8n-community-node-package",
+    "flarum"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/huseyinfiliz/n8n-nodes-flarum.git"
+  },
+  "description": "n8n community node for Flarum forums (core JSON:API + custom request)",
+  "maintainers": [
+    "huseyinfiliz <huseyinfilizqwe@gmail.com>"
+  ],
+  "readmeFilename": "README.md",
+  "_contentLength": 10225,
+  "version": "0.1.12",
+  "main": "index.js",
+  "scripts": {
+    "build": "tsc && gulp build:icons",
+    "dev": "tsc --watch",
+    "format": "prettier nodes credentials --write",
+    "lint": "eslint nodes credentials package.json",
+    "lintfix": "eslint nodes credentials package.json --fix"
+  },
+  "n8n": {
+    "n8nNodesApiVersion": 1,
+    "credentials": [
+      "dist/credentials/FlarumApi.credentials.js"
+    ],
+    "nodes": [
+      "dist/nodes/Flarum/Flarum.node.js"
+    ]
+  },
+  "devDependencies": {
+    "@types/node": "^26.1.1",
+    "@typescript-eslint/parser": "^7.0.0",
+    "eslint-plugin-n8n-nodes-base": "^1.16.0",
+    "gulp": "^4.0.2",
+    "jsonc-eslint-parser": "^3.1.0",
+    "n8n-workflow": "^2.16.0",
+    "prettier": "^3.2.0",
+    "typescript": "^5.9.3"
+  },
+  "peerDependencies": {
+    "n8n-workflow": "*"
+  },
+  "gitHead": "da9d5fd28c607ad21f8f0bf0b7d247613b25e404",
+  "_nodeVersion": "20.20.2",
+  "_npmVersion": "10.8.2",
+  "dist": {
+    "integrity": "sha512-wl6VlfIkDvB5U1Fm2YpHOR8Hy2+mLI9WInpo34MGgibvdoh9M/xqGd7O/Cx1mZMTNgUDDW5kL9gZtrO4w7EXCg==",
+    "shasum": "e8d85958dd011de5699aab725a47a0e4527cb3dd",
+    "tarball": "https://registry.npmjs.org/n8n-nodes-flarum/-/n8n-nodes-flarum-0.1.12.tgz",
+    "fileCount": 11,
+    "unpackedSize": 37522,
+    "signatures": [
+      {
+        "keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
+        "sig": "MEUCIQDnHeMlGFUXQyPKCvMR30elqPN4R+dCP7evHsPIJKOyMAIgQ7jC/79M34xJzPJnQUO5KIUePO/7Sw6G6r0ropp93G8="
+      }
+    ]
+  },
+  "_npmUser": "huseyinfiliz <huseyinfilizqwe@gmail.com>",
+  "directories": {},
+  "_npmOperationalInternal": {
+    "host": "s3://npm-registry-packages-npm-production",
+    "tmp": "tmp/n8n-nodes-flarum_0.1.12_1785159654793_0.03293950535085721"
+  },
+  "_hasShrinkwrap": false
+}

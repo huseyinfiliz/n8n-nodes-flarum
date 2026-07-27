@@ -1,8 +1,5 @@
 name: Publish to npm
 
-# Trigger by pushing a version tag, e.g.:
-#   git tag v0.2.0
-#   git push origin v0.2.0
 on:
   push:
     tags:
@@ -10,11 +7,12 @@ on:
 
 permissions:
   contents: read
-  id-token: write # required for npm provenance
+  id-token: write
 
 jobs:
   publish:
     runs-on: ubuntu-latest
+
     steps:
       - uses: actions/checkout@v4
 
@@ -23,13 +21,17 @@ jobs:
           node-version: '20'
           registry-url: 'https://registry.npmjs.org'
 
+      # npm'i güncelle (OIDC / Trusted Publishing desteği için)
+      - name: Update npm
+        run: npm install -g npm@latest
+
+      - name: Show versions
+        run: |
+          node -v
+          npm -v
+
       - run: npm install --ignore-scripts
 
       - run: npm run build
 
       - run: npm publish --provenance --access public
-        env:
-          # Only needed if you did NOT set up a Trusted Publisher on npmjs.com.
-          # With a Trusted Publisher configured, this line can be removed —
-          # npm authenticates via OIDC using the id-token permission above.
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

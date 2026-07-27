@@ -21,16 +21,10 @@ jobs:
           node-version: '20'
           registry-url: 'https://registry.npmjs.org'
 
-      # npm'i güncelle (OIDC / Trusted Publishing desteği için)
-      - name: Update npm
-        run: npm install -g npm@latest
+      - run: node -v
+      - run: npm -v
 
-      - name: Show versions
-        run: |
-          node -v
-          npm -v
-
-      - run: npm install --ignore-scripts
+      - run: npm ci --ignore-scripts
 
       - run: npm run build
 

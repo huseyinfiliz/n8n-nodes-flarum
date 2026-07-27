@@ -13,12 +13,11 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/huseyinfiliz/n8n-nodes-flarum.git"
+    "url": "git+https://github.com/huseyinfiliz/n8n-nodes-flarum.git"
   },
   "main": "index.js",
   "scripts": {
     "build": "tsc && gulp build:icons",
-    "prepublishOnly": "npm run build",
     "dev": "tsc --watch",
     "format": "prettier nodes credentials --write",
     "lint": "eslint nodes credentials package.json",

@@ -1,51 +1,42 @@
-{
-  "name": "n8n-nodes-flarum",
-  "version": "0.1.7",
-  "description": "n8n community node for Flarum forums (core JSON:API + custom request)",
-  "keywords": [
-    "n8n-community-node-package",
-    "flarum"
-  ],
-  "license": "MIT",
-  "homepage": "https://github.com/huseyinfiliz/n8n-nodes-flarum",
-  "author": {
-    "name": "Hüseyin Filiz"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/huseyinfiliz/n8n-nodes-flarum.git"
-  },
-  "main": "index.js",
-  "scripts": {
-    "build": "tsc && gulp build:icons",
-    "dev": "tsc --watch",
-    "format": "prettier nodes credentials --write",
-    "lint": "eslint nodes credentials package.json",
-    "lintfix": "eslint nodes credentials package.json --fix"
-  },
-  "files": [
-    "dist"
-  ],
-  "n8n": {
-    "n8nNodesApiVersion": 1,
-    "credentials": [
-      "dist/credentials/FlarumApi.credentials.js"
-    ],
-    "nodes": [
-      "dist/nodes/Flarum/Flarum.node.js"
-    ]
-  },
-  "devDependencies": {
-    "@types/node": "^26.1.1",
-    "@typescript-eslint/parser": "^7.0.0",
-    "eslint-plugin-n8n-nodes-base": "^1.16.0",
-    "gulp": "^4.0.2",
-    "jsonc-eslint-parser": "^3.1.0",
-    "n8n-workflow": "^2.16.0",
-    "prettier": "^3.2.0",
-    "typescript": "^5.9.3"
-  },
-  "peerDependencies": {
-    "n8n-workflow": "*"
-  }
-}
+name: Publish to npm
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+permissions:
+  contents: read
+  id-token: write
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          registry-url: 'https://registry.npmjs.org'
+
+      - name: Show Node & npm versions
+        run: |
+          node -v
+          npm -v
+
+      - name: Install dependencies
+        run: npm ci --ignore-scripts
+
+      - name: Build
+        run: npm run build
+
+      - name: npm ping
+        run: npm ping
+
+      - name: npm whoami
+        run: npm whoami || true
+
+      - name: Publish
+        run: npm publish --provenance --access public
